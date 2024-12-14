@@ -9,6 +9,7 @@ from pika.adapters.blocking_connection import BlockingChannel
 from pika.spec import Basic, BasicProperties
 
 from consumers_models.consumer_base import RabbitMQClientBase
+from rabbitmq_conf import config_logging
 
 logger = logging.getLogger(__name__)
 
@@ -65,8 +66,8 @@ def consume_messages(
         passive=False, # Если очередь не существует, вызывается исключение
                        # Если очередь существует, никаких действий не происходит.
                        # Не создает новую очередь, если она отсутствует
-        # auto_delete=False,
-        # exclusive=False
+        # auto_delete=False, # Указывает, что очередь должна быть автоматически удалена, когда все её потребители отключатся.
+        # exclusive=False, # Указывает, что очередь привязана только к текущему соединению и будет автоматически удалена при закрытии этого соединения.
     )
     logger.info("Created queue = %s, routing_key = %s", queue_, "test")
 

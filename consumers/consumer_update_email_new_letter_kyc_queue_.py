@@ -6,8 +6,8 @@ import time
 from pika.adapters.blocking_connection import BlockingChannel
 from pika.spec import Basic, BasicProperties
 
-from src.core.apps.mq.consumer_oop_email_update_kyc import EmailUpdateRabbit, MQ_EMAIL_NAME_UPDATE_NAW_LETTERS_QUEUE_KYC
-from src.core.apps.mq.rabbitmq_connection import config_logging
+from consumers_models.consumer_email_update_kyc import EmailUpdateRabbit
+from rabbitmq_conf import config_logging, MQ_EMAIL_NAME_UPDATE_NAW_LETTERS_QUEUE_KYC
 
 # Настраиваем логгер для записи событий
 logger = logging.getLogger(__name__)

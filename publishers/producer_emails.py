@@ -3,7 +3,7 @@ import logging
 import time
 
 from consumers_models.consumer_email_update_kyc import EmailUpdateRabbit
-from rabbitmq_conf import MQ_EMAIL_UPDATE_EXCHANGE_NAME
+from rabbitmq_conf import MQ_EMAIL_UPDATE_EXCHANGE_NAME, config_logging
 
 logger = logging.getLogger(__name__)
 

@@ -3,6 +3,9 @@ x-service-defaults: &service-defaults
   networks:
     - api_net
 
+networks:
+  api_net:
+    driver: bridge
 
 services:
 
