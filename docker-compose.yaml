@@ -1,0 +1,26 @@
+x-service-defaults: &service-defaults
+  restart: always
+  networks:
+    - api_net
+
+
+services:
+
+  rabbitmq:
+    <<: *service-defaults
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  # Для брокера сообщений
+      - "15672:15672"  # Для доступа к веб-интерфейсу управления
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+
+volumes:
+  rabbitmq-data:
+    name: ${RABBITMQ_DATA_VOLUME}
+
