@@ -38,6 +38,7 @@ def produce_message(
         body=body_to_queue.encode(),
         properties=pika.BasicProperties(
             delivery_mode=pika.DeliveryMode.Persistent,  # type: ignore # Делает сообщение persistent, не пропадают, если сервер перезагрузится.
+            expiration='5000'  # TTL сообщения (в миллисекундах)
         )
     )
     logger.info("Сообщение отправлено в RabbitMQ : %s", body_to_queue)
