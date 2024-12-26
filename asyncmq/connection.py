@@ -13,7 +13,7 @@ USER = "user"
 PASSWORD = "password"
 
 
-class AsyncRabbitMQClient:
+class RabbitMQClient:
     def __init__(self, amqp_url: str):
         self.amqp_url = amqp_url
         self.connection: aio_pika.RobustConnection | None = None
